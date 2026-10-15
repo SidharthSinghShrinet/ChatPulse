@@ -27,7 +27,7 @@ export const initSocket = (server) => {
 
     io.on("connection", async (socket) => {
         const userId = socket?.handshake?.query?.userId;
-        // console.log(`User connected with userid: ${userId} and socket id: ${socket.id}`);
+        console.log(`User connected with userid: ${userId} and socket id: ${socket.id}`);
 
         if (userId) {
             if (!userSocketMap[userId]) {
