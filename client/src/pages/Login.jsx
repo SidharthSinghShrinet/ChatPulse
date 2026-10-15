@@ -30,6 +30,10 @@ const Login = () => {
       }
       const response = await loginUserApi(loginDetails);
       if (response?.status === 200) {
+        const token = response?.data?.meta?.token || response?.data?.data?.token;
+        if (token) {
+          localStorage.setItem("token", token);
+        }
         toast.success(response?.data?.message);
         setUser(response?.data?.data)
         setLoginDetails({

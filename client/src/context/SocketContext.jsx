@@ -20,10 +20,15 @@ export const SocketProvider = ({ children }) => {
     const { user } = useAuth();
     useEffect(() => {
         if (user) {
+            const token = localStorage.getItem("token");
             const newSocket = io(SOCKET_URL, {
                 withCredentials: true,
+                auth: {
+                    token
+                },
                 query: {
-                    userId: user?._id
+                    userId: user?._id,
+                    token
                 }
             })
             setSocket(newSocket);

@@ -18,12 +18,19 @@ export function AuthProvider({ children }) {
 
     useEffect(() => {
         const checkAuth = async () => {
+            const token = localStorage.getItem("token");
+            if (!token) {
+                setUser(null);
+                setLoading(false);
+                return;
+            }
             try {
                 const response = await getLoggedInUserProfile();
                 if (response?.status === 200) {
                     setUser(response?.data?.data);
                 }
             } catch (error) {
+                localStorage.removeItem("token");
                 setUser(null);
             } finally {
                 setLoading(false);
@@ -37,6 +44,7 @@ export function AuthProvider({ children }) {
         try {
             await logoutUserApi();
         } finally {
+            localStorage.removeItem("token");
             setUser(null);
         }
     }

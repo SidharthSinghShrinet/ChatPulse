@@ -56,7 +56,11 @@ const loginUser = expressAsyncHandler(async (req, res) => {
     sameSite: process.env.NODE_ENV === "production" ? "none" : "lax",
     maxAge: parseInt(process.env.MAX_AGE || 24) * 60 * 60 * 1000, // Convert hours to milliseconds
   });
-  new ApiResponse(200, true, "Login successfully", existingUser, { token }).send(
+  const userResponse = existingUser.toObject ? existingUser.toObject() : { ...existingUser };
+  delete userResponse.password;
+  userResponse.token = token;
+
+  new ApiResponse(200, true, "Login successfully", userResponse, { token }).send(
     res,
   );
 });
