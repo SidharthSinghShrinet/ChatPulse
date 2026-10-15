@@ -139,7 +139,7 @@ const Sidebar = ({
                 <div className="flex-1 min-w-0">
                   {/* Row 1: Contact Fullname & Last Message Timestamp */}
                   <div className="flex items-center justify-between mb-0.5">
-                    <h3 className={`text-sm font-semibold truncate ${isSelected ? 'text-indigo-950 dark:text-white' : 'text-slate-800 dark:text-slate-200'}`}>
+                    <h3 className={`text-sm truncate ${contact.unreadCount > 0 && !isSelected ? 'font-bold text-slate-950 dark:text-white' : 'font-semibold text-slate-800 dark:text-slate-200'} ${isSelected ? 'text-indigo-950 dark:text-white' : ''}`}>
                       {contact.fullname}
                     </h3>
                     {contact.lastMessage?.createdAt && (

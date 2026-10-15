@@ -51,6 +51,20 @@ function HomePage() {
                 const response = await getMessagesApi(selectedUser?._id);
                 if (response?.status === 200) {
                     setMessages(response?.data?.data);
+                    // Ensure unread counter for this contact is reset to 0 in sidebar users list
+                    setUsers((prev) =>
+                        prev.map((u) =>
+                            u?._id === selectedUser?._id
+                                ? {
+                                      ...u,
+                                      unreadCount: 0,
+                                      lastMessage: u.lastMessage
+                                          ? { ...u.lastMessage, status: "read" }
+                                          : u.lastMessage,
+                                  }
+                                : u
+                        )
+                    );
                 }
             } catch (error) {
                 toast.error(error?.response?.data?.message || error?.message)
@@ -66,9 +80,21 @@ function HomePage() {
         setIsTyping(false);
         if (typingTimeoutRef.current) {
             clearTimeout(typingTimeoutRef.current);
-            // Reset unread counter for this contact to 0
-            setUsers((prev) => prev.map((u) => (u?._id === contact?._id ? { ...u, unreadMessages: 0 } : u)));
         }
+        // Always reset unread counter for this contact to 0
+        setUsers((prev) =>
+            prev.map((u) =>
+                u?._id === contact?._id
+                    ? {
+                          ...u,
+                          unreadCount: 0,
+                          lastMessage: u.lastMessage
+                              ? { ...u.lastMessage, status: "read" }
+                              : u.lastMessage,
+                      }
+                    : u
+            )
+        );
     };
 
     const handleBackToSidebar = () => {
