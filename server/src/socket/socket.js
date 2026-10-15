@@ -2,6 +2,7 @@ import { Server } from "socket.io"
 import { instrument } from "@socket.io/admin-ui";
 import messageModel from "../models/message.model.js";
 import userModel from "../models/user.model.js";
+import { corsOptions } from "../config/cors.js";
 
 
 let io;
@@ -14,11 +15,7 @@ export const getReceiverSocketIds = (receiverId) => {
 
 export const initSocket = (server) => {
     io = new Server(server, {
-        cors: {
-            origin: ["http://localhost:5173", "https://admin.socket.io", "http://192.168.7.6:5173", "http://192.168.7.5:5173"],
-            methods: ["GET", "POST", "PATCH", "PUT", "DELETE"],
-            credentials: true
-        }
+        cors: corsOptions
     });
 
     instrument(io, {

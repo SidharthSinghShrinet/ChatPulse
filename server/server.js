@@ -13,12 +13,13 @@ initSocket(server);
 const startConnection = async () => {
   try {
     await connectDB();
-    server.listen(process.env.PORT, (err) => {
+    const PORT = process.env.PORT || 9000;
+    server.listen(PORT, (err) => {
       if (err) {
         console.log("Error occured while starting the server: ", err);
         process.exit(1);
       }
-      console.log(`Server is running on port ${process.env.PORT}`);
+      console.log(`Server is running on port ${PORT}`);
     });
   } catch (error) {
     console.error("Error while starting the application: ", error);

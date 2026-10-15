@@ -53,8 +53,8 @@ const loginUser = expressAsyncHandler(async (req, res) => {
   res.cookie("token", token, {
     httpOnly: true,
     secure: process.env.NODE_ENV === "production",
-    sameSite: process.env.NODE_ENV === "production" ? "None" : "Lax",
-    maxAge: parseInt(process.env.MAX_AGE) * 60 * 60 * 1000, // Convert hours to milliseconds
+    sameSite: process.env.NODE_ENV === "production" ? "none" : "lax",
+    maxAge: parseInt(process.env.MAX_AGE || 24) * 60 * 60 * 1000, // Convert hours to milliseconds
   });
   new ApiResponse(200, true, "Login successfully", existingUser, { token }).send(
     res,
@@ -66,7 +66,11 @@ const loginUser = expressAsyncHandler(async (req, res) => {
 //& @access  Private
 
 const logoutUser = expressAsyncHandler(async (req, res) => {
-  res.clearCookie("token");
+  res.clearCookie("token", {
+    httpOnly: true,
+    secure: process.env.NODE_ENV === "production",
+    sameSite: process.env.NODE_ENV === "production" ? "none" : "lax",
+  });
   new ApiResponse(200, true, "User Logout successfully").send(res);
 });
 

@@ -6,14 +6,14 @@ import userRoutes from "./src/routes/user.routes.js"
 import messageRoutes from "./src/routes/message.routes.js"
 import cookieParser from "cookie-parser";
 import { setupSwagger } from "./src/config/swagger.js";
+import { corsOptions } from "./src/config/cors.js";
 
 const app = express();
 
-app.use(cors({
-    origin: ["http://localhost:5173", "http://192.168.7.6:5173", "http://192.168.7.5:5173"],
-    methods: ["GET", "POST", "PUT", "PATCH", "DELETE"],
-    credentials: true
-}));
+// Trust reverse proxy for secure cookies on Render
+app.set("trust proxy", 1);
+
+app.use(cors(corsOptions));
 
 app.use(morgan("dev"));
 app.use(cookieParser());
@@ -22,6 +22,14 @@ app.use(express.json());
 
 // Swagger Documentation UI
 setupSwagger(app);
+
+// Health Check Route
+app.get("/", (req, res) => {
+    res.status(200).json({
+        status: "success",
+        message: "BaatCheet Backend Is Running",
+    });
+});
 
 app.use("/api/v1/users", userRoutes);
 app.use("/api/v1/messages", messageRoutes);
