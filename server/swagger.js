@@ -9,8 +9,8 @@ const doc = {
   },
   servers: [
     {
-      url: "http://localhost:9000",
-      description: "Development Server",
+      url: "/",
+      description: "Current Server",
     },
   ],
   components: {

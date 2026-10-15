@@ -13,6 +13,12 @@ export const setupSwagger = (app) => {
   try {
     if (fs.existsSync(swaggerFilePath)) {
       const swaggerDocument = JSON.parse(fs.readFileSync(swaggerFilePath, "utf8"));
+      swaggerDocument.servers = [
+        {
+          url: "/",
+          description: "Current Server",
+        },
+      ];
       app.use(
         "/api-docs",
         swaggerUi.serve,
@@ -21,7 +27,7 @@ export const setupSwagger = (app) => {
           customSiteTitle: "ChatPulse API Docs (Auto-generated)",
         })
       );
-      console.log("Swagger UI available at http://localhost:9000/api-docs");
+      console.log("Swagger UI available at /api-docs");
     } else {
       console.warn("swagger-output.json not found. Run 'npm run swagger' to generate it.");
     }
