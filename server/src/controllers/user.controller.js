@@ -17,7 +17,7 @@ const registerUser = expressAsyncHandler(async (req, res) => {
   }
   const userExists = await userModel.findOne({ username });
   if (userExists) {
-    throw new ErrorHandler(400, "User already exists");
+    throw new ErrorHandler(400, "User already exists. Please try with a different username");
   }
   const user = await userModel.create({
     username,
