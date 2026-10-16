@@ -6,8 +6,8 @@ const PublicRoute = () => {
     const { user, loading } = useAuth();
     if (loading) {
         return (
-            <div className="min-h-screen bg-slate-950 flex items-center justify-center text-slate-400">
-                Loading...
+            <div className="min-h-screen bg-slate-950 flex items-center justify-center">
+                <div className="w-8 h-8 rounded-full border-2 border-indigo-500/20 border-t-indigo-500 animate-spin" />
             </div>
         )
     }

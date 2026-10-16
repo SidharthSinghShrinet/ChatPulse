@@ -58,3 +58,50 @@ html.light ::-webkit-scrollbar-thumb {
 html.light ::-webkit-scrollbar-thumb:hover {
   background: rgba(100, 116, 139, 0.5);
 }
+
+/* ==========================================================================
+   PWA Startup Animated Splash Screen
+   ========================================================================== */
+.splash-pulse-glow {
+  animation: splashPulseGlow 2.4s ease-in-out infinite;
+}
+
+.splash-logo-breathe {
+  animation: splashLogoBreathe 2.4s cubic-bezier(0.4, 0, 0.2, 1) infinite;
+}
+
+.splash-loader-bar {
+  animation: splashSweep 1.4s ease-in-out infinite;
+}
+
+@keyframes splashPulseGlow {
+  0%, 100% {
+    transform: scale(0.95);
+    opacity: 0.55;
+  }
+  50% {
+    transform: scale(1.25);
+    opacity: 1;
+  }
+}
+
+@keyframes splashLogoBreathe {
+  0%, 100% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.06);
+  }
+}
+
+@keyframes splashSweep {
+  0% {
+    transform: translateX(-100%);
+  }
+  50% {
+    transform: translateX(0%);
+  }
+  100% {
+    transform: translateX(100%);
+  }
+}
