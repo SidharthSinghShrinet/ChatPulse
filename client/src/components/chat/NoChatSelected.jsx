@@ -14,7 +14,7 @@ const NoChatSelected = () => {
       </div>
 
       <h2 className="text-xl sm:text-2xl font-bold text-slate-900 dark:text-white mb-2 tracking-tight">
-        Welcome to ChatPulse
+        Welcome to Txtro
       </h2>
       <p className="text-sm text-slate-500 dark:text-slate-400 max-w-sm mb-6 leading-relaxed">
         Select a conversation from the sidebar to start chatting in real time with end-to-end WebSocket connection.

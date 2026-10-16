@@ -24,7 +24,7 @@ export const setupSwagger = (app) => {
         swaggerUi.serve,
         swaggerUi.setup(swaggerDocument, {
           customCss: ".swagger-ui .topbar { display: none }",
-          customSiteTitle: "ChatPulse API Docs (Auto-generated)",
+          customSiteTitle: "Txtro API Docs (Auto-generated)",
         })
       );
       console.log("Swagger UI available at /api-docs");

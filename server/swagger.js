@@ -3,7 +3,7 @@ import swaggerAutogen from "swagger-autogen";
 const doc = {
   openapi: "3.0.0",
   info: {
-    title: "ChatPulse API Documentation",
+    title: "Txtro API Documentation",
     description: "Auto-generated OpenAPI Documentation for Real-Time Chat Application",
     version: "1.0.0",
   },

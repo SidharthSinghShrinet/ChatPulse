@@ -51,7 +51,7 @@ const Register = () => {
   return (
     <AuthCard
       title="Create Account"
-      subtitle="Join ChatPulse to start chatting in real time"
+      subtitle="Join Txtro to start chatting in real time"
       footerPrompt="Already have an account?"
       footerLinkText="Sign in"
       footerLinkTo="/login"

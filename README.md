@@ -1,4 +1,4 @@
-# 💬 ChatPulse — Production Real-Time Chat Platform
+# 💬 Txtro — Production Real-Time Chat Platform
 
 A modern, full-stack, real-time messaging application engineered with **Node.js, Express, MongoDB, Socket.IO, React, Vite, and Tailwind CSS v4**. Built from the ground up to mirror the responsiveness, feature completeness, and visual polish of platforms like **WhatsApp** and **Telegram**.
 
@@ -37,7 +37,7 @@ All future features and architectural upgrades in this project follow our strict
 
 ## 🌟 Overview
 
-ChatPulse provides instantaneous bidirectional communication with enterprise-grade state synchronization between in-memory WebSocket connections and MongoDB persistence. It includes features such as:
+Txtro provides instantaneous bidirectional communication with enterprise-grade state synchronization between in-memory WebSocket connections and MongoDB persistence. It includes features such as:
 - Multi-device socket session pooling
 - Real-time read receipts with single, double, and sky-blue ticks
 - Live debounced typing indicators
